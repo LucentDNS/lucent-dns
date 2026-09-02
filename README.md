@@ -50,6 +50,7 @@ https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt
 ```bash
 npm install -g @adguard/hostlist-compiler
 hostlist-compiler -c configuration.json -o dns-filter.txt
+```
 
 <hr>
 ⏰ 自动更新
