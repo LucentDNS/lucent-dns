@@ -1,0 +1,84 @@
+name: 编译 DNS 过滤规则
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0,6,12,18 * * *'
+  push:
+    paths:
+      - 'configuration.json'
+      - '.github/workflows/build.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v5
+
+      - name: 设置 Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '20'
+
+      - name: 安装 hostlist-compiler
+        run: npm install -g @adguard/hostlist-compiler
+
+      - name: 编译规则
+        run: hostlist-compiler -c configuration.json -o dns-filter.txt
+
+      - name: 安装 AGLint
+        run: npm install -g @adguard/aglint
+
+      - name: 创建 AGLint 配置文件
+        run: echo '{}' > .aglintrc
+
+      - name: 检查规则质量
+        run: npx aglint dns-filter.txt
+        timeout-minutes: 2
+
+      - name: 获取编译时间
+        id: time
+        run: echo "date=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
+
+      - name: 发布到 Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: latest
+          name: "✨ Lucent DNS v${{ github.run_number }}"
+          body: |
+            ## 📋 编译信息
+
+            | 项目 | 详情 |
+            |------|------|
+            | 编译时间 | ${{ steps.time.outputs.date }} |
+            | 触发方式 | `${{ github.event_name }}` |
+            | 运行编号 | #${{ github.run_number }} |
+            | 提交哈希 | `${{ github.sha }}` |
+
+            ## 📦 规则构成
+
+            - **HaGeZi Pro**：社区标杆 DNS 过滤列表，覆盖广告、追踪器、恶意域名，低误杀（~23万条）
+            - **HaGeZi TIF Mini**：威胁情报精简版，拦截钓鱼、勒索、C2 服务器，专为家用设备优化（~5-8万条）
+
+            > 双源合并去重后，总规则量约 **28-30 万条**，性能与安全完美平衡。
+
+            ## 🔧 使用方法
+
+            在 AdGuard Home 或 AdGuard 客户端中添加以下订阅地址：
+
+            https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt
+
+            ## ⚠️ 注意事项
+
+            - 适合 **128MB 及以上内存** 的设备（绝大多数主流路由器均可流畅运行）
+            - 如遇误拦，请检查 AGH 查询日志，将域名加入白名单
+            - 推荐搭配 uBlock Origin 等浏览器拦截器获得最佳效果
+
+          files: dns-filter.txt
+          overwrite_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

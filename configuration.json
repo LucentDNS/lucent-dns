@@ -1,0 +1,30 @@
+{
+    "name": "Lucent DNS Filter",
+    "description": "Based on HaGeZi Pro + TIF Mini compilation",
+    "homepage": "https://github.com/LucentDNS/lucent-dns",
+    "sources": [
+        {
+            "name": "HaGeZi Pro",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt",
+            "type": "adblock",
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
+        },
+        {
+            "name": "HaGeZi TIF Mini",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
+            "type": "adblock",
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
+        }
+    ],
+    "transformations": [
+        "RemoveComments",
+        "Deduplicate",
+        "Compress"
+    ]
+}
