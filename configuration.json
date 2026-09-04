@@ -1,20 +1,20 @@
 {
   "name": "Lucent DNS Filter",
-  "description": "Based on HaGeZi Pro + TIF Mini, optimized with official transformations",
+  "description": "Compiled from AdGuard DNS filter and OISD Blocklist Big",
   "homepage": "https://github.com/LucentDNS/lucent-dns",
   "license": "MIT",
   "version": "1.0.0",
 
   "sources": [
     {
-      "name": "HaGeZi Pro",
-      "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt",
+      "name": "AdGuard DNS filter",
+      "source": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
       "type": "adblock",
-      "transformations": ["RemoveModifiers", "Validate"]
+      "transformations": ["ValidateAllowIp"]
     },
     {
-      "name": "HaGeZi TIF Mini",
-      "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
+      "name": "OISD Blocklist Big",
+      "source": "https://big.oisd.nl/",
       "type": "adblock",
       "transformations": ["RemoveModifiers", "Validate"]
     }
