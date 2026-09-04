@@ -1,30 +1,32 @@
 {
-    "name": "Lucent DNS Filter",
-    "description": "Based on HaGeZi Pro + TIF Mini compilation",
-    "homepage": "https://github.com/LucentDNS/lucent-dns",
-    "sources": [
-        {
-            "name": "HaGeZi Pro",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt",
-            "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
-        },
-        {
-            "name": "HaGeZi TIF Mini",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
-            "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
-        }
-    ],
-    "transformations": [
-        "RemoveComments",
-        "Deduplicate",
-        "Compress"
-    ]
+  "name": "Lucent DNS Filter",
+  "description": "Based on HaGeZi Pro + TIF Mini, optimized with official transformations",
+  "homepage": "https://github.com/LucentDNS/lucent-dns",
+  "license": "MIT",
+  "version": "1.0.0",
+
+  "sources": [
+    {
+      "name": "HaGeZi Pro",
+      "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt",
+      "type": "adblock",
+      "transformations": ["RemoveModifiers", "Validate"]
+    },
+    {
+      "name": "HaGeZi TIF Mini",
+      "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
+      "type": "adblock",
+      "transformations": ["RemoveModifiers", "Validate"]
+    }
+  ],
+
+  "transformations": [
+    "RemoveComments",
+    "Deduplicate",
+    "Compress",
+    "RemoveEmptyLines",
+    "InsertFinalNewLine"
+  ],
+
+  "exclusions_sources": ["./custom_exclusions.txt"]
 }
