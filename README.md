@@ -27,11 +27,18 @@
 
 ## 📦 规则构成
 
-| 规则源 | 说明 | 规则量 |
-| :--- | :--- | :--- |
-| AdGuard DNS filter | AdGuard 官方 DNS 优化版，专注广告与追踪器拦截 | ~18 万条 |
-| OISD Blocklist Big | 社区高覆盖综合性列表，覆盖广告、追踪器、恶意软件、钓鱼等 | ~27 万条 |
-| **合并去重压缩后** | 自动去除重叠规则，保留精华，兼顾性能与安全 | **35~36 万条** |
+| 数据源 | 说明 |
+|--------|------|
+| AdGuard Base Filter | 官方核心广告域名库（adservers + first-party + foreign + cryptominers） |
+| AdGuard Mobile Ads Filter | 移动端广告拦截 |
+| AdGuard Tracking Protection Filter | 官方核心追踪域名库（third-party + first-party + mobile） |
+| EasyList + EasyPrivacy | 社区经典广告/追踪列表 |
+| AdGuard Chinese Filter | 中文地区广告拦截 |
+| EasyList China | 中文地区补充 |
+| OISD Blocklist Big | 社区高覆盖综合性列表 |
+| **手动修正** | 用户反馈的误杀/遗漏通过 `custom_exclusions.txt` 快速响应 |
+
+> 合并去重压缩后，总规则量约 **35~40 万条**
 
 <hr>
 
