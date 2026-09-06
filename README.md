@@ -18,30 +18,20 @@
 
 ## 📌 特性
 
-- **多源融合** — 精选 AdGuard 官方细分源 + 社区经典列表，覆盖广告、追踪器、恶意软件、钓鱼
-- **中文优化** — 包含 AdGuard Chinese Filter 和 EasyList China，专为中文用户优化
-- **安全增强** — 集成 Phishing Army、NoCoin 等安全源
+- **双源融合** — AdGuard DNS Filter + ProtoConsent Core，覆盖广告、追踪器、恶意软件、钓鱼
+- **协议覆盖** — 同时支持 Adblock 语法和 Hosts 语法源，经编译器统一转换为 DNS 友好格式
 - **自动更新** — 每 6 小时同步上游最新规则，永不过时
-- **快速响应** — 用户反馈的误杀/遗漏通过 `custom_exclusions.txt` 快速修正
 
 <hr>
 
 ## 📦 规则构成
 
-| 数据源 | 说明 |
-|--------|------|
-| AdGuard Base Filter | 官方核心广告域名库（adservers + first-party + foreign + cryptominers） |
-| AdGuard Mobile Ads Filter | 移动端广告拦截 |
-| AdGuard Tracking Protection Filter | 官方核心追踪域名库（third-party + first-party + mobile） |
-| EasyList 细分源 | 社区经典广告列表（adservers + third-party + specific block） |
-| EasyPrivacy 细分源 | 社区经典追踪列表（tracking servers + third-party + international） |
-| AdGuard Chinese Filter | 中文地区广告拦截 |
-| EasyList China | 中文地区补充 |
-| Phishing Army | 钓鱼域名拦截 |
-| NoCoin | 加密货币挖矿拦截 |
-| **Custom Overrides** | 用户反馈的误杀/遗漏通过 `custom_exclusions.txt` 快速响应 |
+| 数据源 | 格式 | 说明 |
+|--------|------|------|
+| [AdGuard DNS Filter](https://github.com/AdguardTeam/AdguardSDNSFilter) | Adblock | AdGuard 官方 DNS 优化规则，覆盖广告、追踪、恶意软件 |
+| [ProtoConsent Core](https://github.com/ProtoConsent/data) | Hosts | 社区高置信度拦截列表，覆盖分析、个性化追踪、第三方服务 |
 
-> 合并去重压缩后，总规则量以编译后实际数据为准
+> 合并去重压缩后，总规则量以编译后实际数据为准。
 
 <hr>
 
@@ -69,13 +59,9 @@ GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布�
 <hr>
 🙏 致谢
 
-    AdGuard Filters — 官方核心数据源
+    AdGuard DNS Filter — 官方核心数据源
 
-    EasyList / EasyPrivacy — 社区经典列表
-
-    Phishing Army — 钓鱼域名拦截
-
-    NoCoin — 挖矿拦截
+    ProtoConsent — 社区高置信度拦截列表
 
     Hostlist Compiler — 官方编译工具
 
