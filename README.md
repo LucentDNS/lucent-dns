@@ -18,8 +18,8 @@
 
 ## 📌 特性
 
-- **双源融合** — AdGuard DNS Filter + ProtoConsent Core，覆盖广告、追踪器、恶意软件、钓鱼
-- **协议覆盖** — 同时支持 Adblock 语法和 Hosts 语法源，经编译器统一转换为 DNS 友好格式
+- **双源融合** — AdGuard DNS Filter + AdRules DNS List，全球基础拦截与国内广告专项增强
+- **国内优化** — AdRules 针对百度、腾讯、字节跳动等国内广告联盟深度拦截，弥补通用规则的不足
 - **自动更新** — 每 6 小时同步上游最新规则，永不过时
 
 <hr>
@@ -29,7 +29,7 @@
 | 数据源 | 格式 | 说明 |
 |--------|------|------|
 | [AdGuard DNS Filter](https://github.com/AdguardTeam/AdguardSDNSFilter) | Adblock | AdGuard 官方 DNS 优化规则，覆盖广告、追踪、恶意软件 |
-| [ProtoConsent Core](https://github.com/ProtoConsent/data) | Hosts | 社区高置信度拦截列表，覆盖分析、个性化追踪、第三方服务 |
+| [AdRules DNS List](https://github.com/Cats-Team/AdRules) | Adblock | 国内广告联盟专项拦截，覆盖百度、腾讯、字节跳动、阿里等 |
 
 > 合并去重压缩后，总规则量以编译后实际数据为准。
 
@@ -61,7 +61,7 @@ GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布�
 
     AdGuard DNS Filter — 官方核心数据源
 
-    ProtoConsent — 社区高置信度拦截列表
+    AdRules — 国内广告专项拦截列表
 
     Hostlist Compiler — 官方编译工具
 
