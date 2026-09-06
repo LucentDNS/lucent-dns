@@ -32,13 +32,15 @@
 | AdGuard Base Filter | 官方核心广告域名库（adservers + first-party + foreign + cryptominers） |
 | AdGuard Mobile Ads Filter | 移动端广告拦截 |
 | AdGuard Tracking Protection Filter | 官方核心追踪域名库（third-party + first-party + mobile） |
-| EasyList + EasyPrivacy | 社区经典广告/追踪列表 |
+| EasyList 细分源 | 社区经典广告列表（adservers + third-party + specific block） |
+| EasyPrivacy 细分源 | 社区经典追踪列表（tracking servers + third-party + international） |
 | AdGuard Chinese Filter | 中文地区广告拦截 |
 | EasyList China | 中文地区补充 |
-| OISD Blocklist Big | 社区高覆盖综合性列表 |
-| **手动修正** | 用户反馈的误杀/遗漏通过 `custom_exclusions.txt` 快速响应 |
+| Phishing Army | 钓鱼域名拦截 |
+| NoCoin | 加密货币挖矿拦截 |
+| **Custom Overrides** | 用户反馈的误杀/遗漏通过 `custom_exclusions.txt` 快速响应 |
 
-> 合并去重压缩后，总规则量约 **35~40 万条**
+> 合并去重压缩后，总规则量约 **30 万条**（待编译后填入实际数字）
 
 <hr>
 
@@ -66,9 +68,13 @@ GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布�
 <hr>
 🙏 致谢
 
-    AdGuard DNS filter — 官方核心源
+    AdGuard Filters — 官方核心数据源
 
-    OISD Blocklist — 社区优秀综合列表
+    EasyList / EasyPrivacy — 社区经典列表
+
+    Phishing Army — 钓鱼域名拦截
+
+    NoCoin — 挖矿拦截
 
     Hostlist Compiler — 官方编译工具
 
