@@ -18,8 +18,8 @@
 
 ## 📌 特性
 
-- **双源融合** — HaGeZi's Normal Blocklist + AdRules DNS List，全球基础拦截与国内广告专项增强
-- **国内优化** — AdRules 针对百度、腾讯、字节跳动等国内广告联盟深度拦截，弥补通用规则的不足
+- **三重防护** — HaGeZi's Pro Blocklist 为基础，叠加威胁情报源（TIF）与恶意软件专项拦截，强化安全防护
+- **安全增强** — 集成 HaGeZi Threat Intelligence Feeds 与 Dandelion Sprout's Anti-Malware List，提升对恶意软件、钓鱼、诈骗的拦截能力
 - **自动更新** — 每 6 小时同步上游最新规则，永不过时
 
 <hr>
@@ -28,8 +28,9 @@
 
 | 数据源 | 格式 | 说明 |
 |--------|------|------|
-| [HaGeZi's Normal Blocklist](https://github.com/hagezi/dns-blocklists) | Adblock | 社区公认的平衡型拦截规则，覆盖广告、追踪、恶意软件、诈骗等 |
-| [AdRules DNS List](https://github.com/Cats-Team/AdRules) | Adblock | 国内广告联盟专项拦截，覆盖百度、腾讯、字节跳动、阿里等 |
+| [HaGeZi's Pro Blocklist](https://github.com/hagezi/dns-blocklists) | Adblock | 社区公认的高强度拦截规则，覆盖广告、追踪、恶意软件、诈骗等 |
+| [HaGeZi's TIF mini](https://github.com/hagezi/dns-blocklists) | Adblock | 精简版威胁情报源，针对恶意软件、钓鱼、诈骗等实时威胁 |
+| [Dandelion Sprout's Anti-Malware List](https://github.com/DandelionSprout/adfilt) | Adblock | 专门针对恶意软件、病毒、蠕虫等威胁的拦截列表 |
 
 > 合并去重压缩后，总规则量以编译后实际数据为准。
 
@@ -57,11 +58,11 @@ GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布�
 <hr>
 🙏 致谢
 
-    HaGeZi's Normal Blocklist — 社区公认的平衡型拦截规则
+    HaGeZi's Pro Blocklist — 社区公认的高强度拦截规则
 
-    AdRules — 国内广告专项拦截列表
+    HaGeZi's Threat Intelligence Feeds — 实时威胁情报源
 
-    Hostlist Compiler — 官方编译工具
+    Dandelion Sprout's Anti-Malware List — 恶意软件专项拦截列表
 
 <hr>
 📄 许可证
