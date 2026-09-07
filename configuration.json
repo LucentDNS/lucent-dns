@@ -4,11 +4,12 @@
     "homepage": "https://github.com/LucentDNS/lucent-dns",
     "sources": [
         {
-            "name": "AdGuard DNS filter",
-            "source": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
+            "name": "HaGeZi's Normal Blocklist",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt",
             "type": "adblock",
             "transformations": [
-                "ValidateAllowIp"
+                "RemoveModifiers",
+                "Validate"
             ]
         },
         {
@@ -16,7 +17,8 @@
             "source": "https://raw.githubusercontent.com/Cats-Team/AdRules/main/dns.txt",
             "type": "adblock",
             "transformations": [
-                "ValidateAllowIp"
+                "RemoveModifiers",
+                "Validate"
             ]
         }
     ],
