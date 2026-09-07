@@ -1,11 +1,11 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "List for blocking ads in the Chinese region. Aims at privacy protection.",
+    "description": "List composed of several filters (HaGeZi's Pro Blocklist, HaGeZi's Threat Intelligence Feeds mini version and Dandelion Sprout's Anti-Malware List) and simplified specifically to be better compatible with DNS-level ad blocking",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
     "sources": [
         {
-            "name": "HaGeZi's Normal Blocklist",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt",
+            "name": "HaGeZi's Pro Blocklist",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt",
             "type": "adblock",
             "transformations": [
                 "RemoveModifiers",
@@ -13,12 +13,21 @@
             ]
         },
         {
-            "name": "AdRules DNS List",
-            "source": "https://raw.githubusercontent.com/Cats-Team/AdRules/main/dns.txt",
+            "name": "HaGeZi's TIF mini",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
             "type": "adblock",
             "transformations": [
                 "RemoveModifiers",
                 "Validate"
+            ]
+        },
+        {
+            "name": "Dandelion Sprout's Anti-Malware List",
+            "source": "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareAdGuardHome.txt",
+            "type": "adblock",
+            "transformations": [
+                "RemoveModifiers",
+                "ValidateAllowIp"
             ]
         }
     ],
