@@ -61,11 +61,13 @@ jobs:
 
             ## 📦 规则构成
 
-            - **HaGeZi's Pro Blocklist**：社区公认的高强度拦截规则，覆盖广告、追踪、恶意软件等（约 22 万条）
-            - **HaGeZi's TIF mini**：精简版威胁情报源，针对恶意软件、钓鱼、诈骗等实时威胁（约 18 万条）
-            - **Dandelion Sprout's Anti-Malware List**：专门针对恶意软件、病毒、蠕虫等威胁的拦截列表（约 7 万条）
+            - **AdGuard DNS Filter**：官方核心规则，由 AdGuard Base、Tracking Protection、Mobile Ads、EasyList、EasyPrivacy 等精选组合而成（约 8 万条）
+            - **NoCoin Filter List**：专门拦截浏览器端加密货币挖矿脚本
+            - **CJX's Annoyance List**：拦截 Cookie 提示、订阅弹窗等烦人元素
+            - **Steven Black's Hosts**：经典 hosts 集合，覆盖 adware + malware
+            
 
-            > 三源合并去重后，总规则量以编译后实际数据为准。
+            > 四源合并去重后，总规则量以编译后实际数据为准。
 
             ## 🔧 使用方法
 
@@ -75,7 +77,7 @@ jobs:
 
             ## ⚠️ 注意事项
 
-            - 适合 **128MB 及以上内存** 的设备（绝大多数主流设备均可流畅运行）
+            - 适合 **64MB 及以上内存** 的设备
             - 如遇误拦，请检查 AGH 查询日志，将域名加入白名单
             - 推荐搭配 uBlock Origin 等浏览器拦截器获得最佳效果
 
