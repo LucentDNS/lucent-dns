@@ -1,39 +1,43 @@
 {
-    "name": "Lucent DNS Filter",
-    "description": "List composed of several filters (HaGeZi's Pro Blocklist, HaGeZi's Threat Intelligence Feeds mini version and Dandelion Sprout's Anti-Malware List) and simplified specifically to be better compatible with DNS-level ad blocking",
-    "homepage": "https://github.com/LucentDNS/lucent-dns",
-    "sources": [
-        {
-            "name": "HaGeZi's Pro Blocklist",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt",
-            "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
-        },
-        {
-            "name": "HaGeZi's TIF mini",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
-            "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
-        },
-        {
-            "name": "Dandelion Sprout's Anti-Malware List",
-            "source": "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareAdGuardHome.txt",
-            "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "ValidateAllowIp"
-            ]
-        }
-    ],
-    "transformations": [
-        "RemoveComments",
-        "Deduplicate",
-        "Compress"
-    ]
+  "name": "Lucent DNS Filter",
+  "sources": [
+    {
+      "name": "AdGuard DNS filter",
+      "source": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
+      "type": "adblock",
+      "transformations": ["ValidateAllowIp"]
+    },
+    {
+      "name": "NoCoin Filter List",
+      "source": "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt",
+      "type": "hosts",
+      "exclusions_sources": [
+        "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
+      ],
+      "transformations": ["Validate"]
+    },
+    {
+      "name": "CJX's Annoyance List",
+      "source": "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt",
+      "type": "adblock",
+      "exclusions_sources": [
+        "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
+      ],
+      "transformations": ["RemoveModifiers", "Validate"]
+    },
+    {
+      "name": "Steven Black's List",
+      "source": "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts",
+      "type": "hosts",
+      "exclusions_sources": [
+        "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
+      ],
+      "exclusions": ["localhost.localdomain"],
+      "transformations": ["Validate"]
+    }
+  ],
+  "transformations": ["RemoveComments", "Deduplicate", "Compress"],
+  "exclusions_sources": [
+    "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
+  ]
 }
