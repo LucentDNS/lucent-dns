@@ -18,9 +18,10 @@
 
 ## 📌 特性
 
-- **三重防护** — HaGeZi's Pro Blocklist 为基础，叠加威胁情报源（TIF）与恶意软件专项拦截，强化安全防护
-- **安全增强** — 集成 HaGeZi Threat Intelligence Feeds 与 Dandelion Sprout's Anti-Malware List，提升对恶意软件、钓鱼、诈骗的拦截能力
+- **官方核心** — 以 AdGuard DNS Filter 为基础，经过数亿用户验证，稳定性极高
+- **多维补充** — 叠加 NoCoin（反挖矿）、CJX's Annoyance（反骚扰）、Steven Black（经典 hosts）三大成熟源
 - **自动更新** — 每 6 小时同步上游最新规则，永不过时
+- **格式标准** — 经 hostlist-compiler 编译，完全兼容 AdGuard Home / AdGuard DNS
 
 <hr>
 
@@ -28,9 +29,10 @@
 
 | 数据源 | 格式 | 说明 |
 |--------|------|------|
-| [HaGeZi's Pro Blocklist](https://github.com/hagezi/dns-blocklists) | Adblock | 社区公认的高强度拦截规则，覆盖广告、追踪、恶意软件、诈骗等 |
-| [HaGeZi's TIF mini](https://github.com/hagezi/dns-blocklists) | Adblock | 精简版威胁情报源，针对恶意软件、钓鱼、诈骗等实时威胁 |
-| [Dandelion Sprout's Anti-Malware List](https://github.com/DandelionSprout/adfilt) | Adblock | 专门针对恶意软件、病毒、蠕虫等威胁的拦截列表 |
+| [AdGuard DNS Filter](https://github.com/AdguardTeam/AdGuardSDNSFilter) | Adblock | 官方精选组合，涵盖广告、追踪、移动广告等（约 8 万条） |
+| [NoCoin Filter List](https://github.com/hoshsadiq/adblock-nocoin-list) | hosts | 拦截浏览器端加密货币挖矿脚本 |
+| [CJX's Annoyance List](https://github.com/cjx82630/cjxlist) | Adblock | 拦截 Cookie 提示、订阅弹窗等烦人元素 |
+| [Steven Black's Hosts](https://github.com/StevenBlack/hosts) | hosts | 经典 hosts 集合，覆盖 adware + malware |
 
 > 合并去重压缩后，总规则量以编译后实际数据为准。
 
@@ -58,11 +60,13 @@ GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布�
 <hr>
 🙏 致谢
 
-    HaGeZi's Pro Blocklist — 社区公认的高强度拦截规则
+    AdGuard DNS Filter — 官方核心规则
 
-    HaGeZi's Threat Intelligence Feeds — 实时威胁情报源
+    NoCoin Filter List — 反挖矿拦截
 
-    Dandelion Sprout's Anti-Malware List — 恶意软件专项拦截列表
+    CJX's Annoyance List — 反骚扰拦截
+
+    Steven Black's Hosts — 经典 hosts 集合
 
 <hr>
 📄 许可证
