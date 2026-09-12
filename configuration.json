@@ -1,43 +1,30 @@
 {
-  "name": "Lucent DNS Filter",
-  "sources": [
-    {
-      "name": "AdGuard DNS filter",
-      "source": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
-      "type": "adblock",
-      "transformations": ["ValidateAllowIp"]
-    },
-    {
-      "name": "NoCoin Filter List",
-      "source": "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt",
-      "type": "hosts",
-      "exclusions_sources": [
-        "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
-      ],
-      "transformations": ["Validate"]
-    },
-    {
-      "name": "CJX's Annoyance List",
-      "source": "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt",
-      "type": "adblock",
-      "exclusions_sources": [
-        "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
-      ],
-      "transformations": ["RemoveModifiers", "Validate"]
-    },
-    {
-      "name": "Steven Black's List",
-      "source": "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts",
-      "type": "hosts",
-      "exclusions_sources": [
-        "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
-      ],
-      "exclusions": ["localhost.localdomain"],
-      "transformations": ["Validate"]
-    }
-  ],
-  "transformations": ["RemoveComments", "Deduplicate", "Compress"],
-  "exclusions_sources": [
-    "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
-  ]
+    "name": "Lucent DNS Filter",
+    "description": "Clean up the Internet and protect your privacy! Based on HaGeZi with AWAvenue for CN ads.",
+    "homepage": "https://github.com/LucentDNS/lucent-dns",
+    "sources": [
+        {
+            "name": "HaGeZi's Normal Blocklist",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt",
+            "type": "adblock",
+            "transformations": ["Validate"]
+        },
+        {
+            "name": "HaGeZi's Threat Intelligence Feeds - mini version",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
+            "type": "adblock",
+            "transformations": ["Validate"]
+        },
+        {
+            "name": "AWAvenue Ads Rule",
+            "source": "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt",
+            "type": "adblock",
+            "transformations": ["Validate"]
+        }
+    ],
+    "transformations": [
+        "RemoveComments",
+        "Deduplicate",
+        "Compress"
+    ]
 }
