@@ -61,25 +61,25 @@ jobs:
 
             ## 📦 规则构成
 
-            - **AdGuard DNS Filter**：官方核心规则，由 AdGuard Base、Tracking Protection、Mobile Ads、EasyList、EasyPrivacy 等精选组合而成（约 8 万条）
-            - **NoCoin Filter List**：专门拦截浏览器端加密货币挖矿脚本
-            - **CJX's Annoyance List**：拦截 Cookie 提示、订阅弹窗等烦人元素
-            - **Steven Black's Hosts**：经典 hosts 集合，覆盖 adware + malware
-            
+            本规则集旨在为家庭网络提供**“设置后忘记”**级别的稳定过滤防护：
 
-            > 四源合并去重后，总规则量以编译后实际数据为准。
+            - **HaGeZi's Normal Blocklist**（约 18 万条）：平衡防护，拦截广告、追踪、遥测、钓鱼、恶意软件。家庭环境首选，不拦截错误上报，极低误杀。
+            - **HaGeZi's TIF Mini**（约 17.7 万条）：核心威胁情报防护，拦截恶意软件、钓鱼及 C2 通信。
+            - **AWAvenue Ads Rule**（约 500 条）：国内 App 广告精准补全，专治开屏、摇一摇、信息流广告。
+
+            > 三源合并去重压缩后，总规则约 35 万条。
 
             ## 🔧 使用方法
 
             在 AdGuard Home 或 AdGuard 客户端中添加以下订阅地址：
 
-            https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt
+            `https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
 
             ## ⚠️ 注意事项
 
-            - 适合 **64MB 及以上内存** 的设备
-            - 如遇误拦，请检查 AGH 查询日志，将域名加入白名单
-            - 推荐搭配 uBlock Origin 等浏览器拦截器获得最佳效果
+            - 适合 **64MB 及以上内存** 的设备。
+            - 适合家庭网络（父母、儿童设备），无需频繁手动维护白名单。
+            - 如遇极端情况误拦，请在 AGH 查询日志中将域名加入白名单。
 
           files: dns-filter.txt
           overwrite_files: true
