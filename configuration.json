@@ -1,7 +1,7 @@
 {
-    "name": "DNS Filter",
+    "name": "Lucent DNS Filter",
     "description": "AdGuard DNS filter (ads, trackers, Chinese regional, cryptominers) + HaGeZi native tracker lists (Windows/Office, Vivo) + HaGeZi TIF Mini (threat intelligence).",
-    "homepage": "https://github.com/hagezi/dns-blocklists",
+    "homepage": "https://github.com/LucentDNS/lucent-dns",
     "sources": [
         {
             "name": "AdGuard DNS filter",
