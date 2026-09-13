@@ -69,15 +69,11 @@ GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布�
 
 ## 🙏 致谢
 
-    AdGuard Filters — 广告、追踪、挖矿、中文区域规则
-
-    EasyList — 广告与追踪域名库
-
-    HaGeZi DNS Blocklists — 威胁情报
-
-    URLHaus Malware Filter — 恶意 URL 库
-
-    AdGuard Hostlist Compiler — 编译工具
+- [AdGuard Filters](https://github.com/AdguardTeam/AdguardFilters) — 广告、追踪、挖矿、中文区域规则
+- [EasyList](https://github.com/easylist/easylist) — 广告与追踪域名库
+- [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) — 威胁情报
+- [URLHaus Malware Filter](https://malware-filter.gitlab.io/malware-filter/) — 恶意 URL 库
+- [AdGuard Hostlist Compiler](https://github.com/AdguardTeam/HostlistCompiler) — 编译工具
 
 <hr>
 
