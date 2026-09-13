@@ -1,47 +1,36 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "AdGuard DNS filter (ads, trackers, Chinese regional, cryptominers) + HaGeZi native tracker lists (Windows/Office, Vivo) + HaGeZi TIF Mini (threat intelligence).",
+    "description": "HaGeZi Multi PRO (Full) + TIF Mini + AdGuard Chinese + official exclusions. Best balance of coverage and stability.",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
+    "license": "https://github.com/AdguardTeam/AdGuardSDNSFilter/blob/master/LICENSE",
     "sources": [
         {
-            "name": "AdGuard DNS filter",
-            "source": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
+            "name": "HaGeZi's Multi PRO",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt",
             "type": "adblock",
-            "transformations": [
-                "ValidateAllowIp"
-            ]
+            "transformations": ["RemoveModifiers", "Validate"]
         },
         {
-            "name": "HaGeZi's Windows/Office Tracker Blocklist",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/native.winoffice.txt",
-            "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
-        },
-        {
-            "name": "HaGeZi's Vivo Tracker Blocklist",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/native.vivo.txt",
-            "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
-        },
-        {
-            "name": "HaGeZi's Threat Intelligence Feeds - mini",
+            "name": "HaGeZi's TIF Mini",
             "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
             "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
+            "transformations": ["RemoveModifiers", "Validate"]
+        },
+        {
+            "name": "AdGuard Chinese filter ad servers",
+            "source": "https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers.txt",
+            "type": "adblock",
+            "transformations": ["RemoveModifiers", "ValidateAllowIp"]
+        },
+        {
+            "name": "AdGuard Chinese filter ad servers first-party",
+            "source": "https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers_firstparty.txt",
+            "type": "adblock",
+            "transformations": ["RemoveModifiers", "ValidateAllowIp"]
         }
     ],
-    "transformations": [
-        "RemoveComments",
-        "Deduplicate",
-        "Compress"
+    "transformations": ["RemoveComments", "Deduplicate", "Compress"],
+    "exclusions_sources": [
+        "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
     ]
 }
