@@ -18,9 +18,10 @@
 
 ## 📌 特性
 
-- **无冗余聚合** — 拒绝简单的堆砌，以 HaGeZi 为唯一底座，直接整合 TIF 与国内优质规则，避免重复拦截。
-- **家庭级稳定** — 采用 `Normal` 版本，主动规避错误追踪器误杀，真正做到“设置后忘记”。
-- **国内精准补全** — 内嵌 AWAvenue Ads Rule，精准拦截国内 App 开屏、摇一摇等顽固广告。
+- **从原始源构建** — 不依赖任何二次聚合列表，直接使用 AdGuard、EasyList、EasyPrivacy 等维护团队的原始输出，与官方 AdGuard DNS filter 同级。
+- **全球覆盖** — 广告、追踪、加密挖矿、恶意软件、钓鱼，全维度覆盖，面向全球用户。
+- **中文区域补充** — 内置 AdGuard Chinese filter，精准补充中文广告生态。
+- **官方误报保护** — 应用 AdGuard 官方 exclusions 排除规则，过滤已知会导致网站损坏的域名。
 - **自动更新** — 每 6 小时同步上游最新规则，永不过时。
 - **格式标准** — 经 hostlist-compiler 官方工具编译，完全兼容 AdGuard Home / AdGuard DNS。
 
@@ -30,11 +31,16 @@
 
 | 数据源 | 定位 | 说明 |
 |--------|------|------|
-| [HaGeZi's Normal Blocklist](https://github.com/hagezi/dns-blocklists) | 核心防护 | 平衡防护，拦截广告、追踪、遥测、钓鱼、恶意软件。家庭环境首选，极低误杀。 |
-| [HaGeZi's TIF Mini](https://github.com/hagezi/dns-blocklists) | 安全加固 | 核心威胁情报防护，拦截恶意软件、钓鱼及 C2 通信。 |
-| [AWAvenue Ads Rule](https://github.com/TG-Twilight/AWAvenue-Ads-Rule) | 中文补全 | 专注拦截国内 App 广告 SDK（开屏、摇一摇、信息流）。 |
+| [AdGuard Base filter](https://github.com/AdguardTeam/AdguardFilters) | 全球广告 | 广告服务器、第一方、外国服务器 |
+| [EasyList](https://github.com/easylist/easylist) | 广告补充 | 经典广告列表，生态最广 |
+| [AdGuard Tracking Protection](https://github.com/AdguardTeam/AdguardFilters) | 追踪防护 | 第三方、第一方追踪器 |
+| [EasyPrivacy](https://github.com/easylist/easylist) | 追踪补充 | 覆盖面广的隐私追踪域名库 |
+| [HaGeZi's TIF Mini](https://github.com/hagezi/dns-blocklists) | 安全加固 | 威胁情报，拦截恶意软件、钓鱼、C2 |
+| [URLHaus](https://malware-filter.gitlab.io/malware-filter/) | 恶意软件 | 专业恶意 URL 库 |
+| [AdGuard Base cryptominers](https://github.com/AdguardTeam/AdguardFilters) | 加密挖矿 | 官方维护的挖矿脚本拦截 |
+| [AdGuard Chinese filter](https://github.com/AdguardTeam/AdguardFilters) | 中文区域 | 中文广告服务器及第一方补充 |
 
-> 合并去重压缩后，总规则量约 35 万条。
+> 合并去重压缩后，总规则量约 20–25 万条。
 
 <hr>
 
