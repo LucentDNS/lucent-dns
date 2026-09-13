@@ -61,20 +61,12 @@ jobs:
 
             ## 📦 规则构成
 
-            本规则集从原始上游源直接编译，覆盖广告、追踪、安全、挖矿及中文区域，适用于家庭网络及个人设备：
+            - **AdGuard DNS filter**：广告、追踪、中文区域、加密挖矿的成熟聚合底子。
+            - **HaGeZi's Windows/Office Tracker Blocklist**：Windows 和 Office 的遥测域名拦截。
+            - **HaGeZi's Vivo Tracker Blocklist**：Vivo 手机系统与内置应用的遥测拦截。
+            - **HaGeZi's TIF Mini**：纯威胁情报，拦截恶意软件、钓鱼和 C2 通信。
 
-            - **AdGuard Base filter**（广告服务器、第一方、外国服务器）：全球广告拦截核心。
-            - **EasyList**（广告服务器、第三方服务器）：经典广告列表补充。
-            - **AdGuard Tracking Protection**（第三方、第一方追踪器）：追踪防护。
-            - **EasyPrivacy**（追踪服务器）：隐私追踪域名库。
-            - **HaGeZi's TIF Mini**：威胁情报，拦截恶意软件、钓鱼及 C2 通信。
-            - **URLHaus**：专业恶意 URL 库。
-            - **AdGuard Base filter cryptominers**：加密挖矿脚本拦截。
-            - **AdGuard Chinese filter**（广告服务器、第一方）：中文区域广告补充。
-            - **官方 exclusions 排除规则**：过滤已知会破坏网站的域名，降低误杀。
-            - **自定义规则与例外**：预留用户反馈迭代入口。
-
-            > 合并去重压缩后，总规则量约 20–25 万条。
+            > 合并去重压缩后，总规则量约 28–32 万条。
 
             ## 🔧 使用方法
 
