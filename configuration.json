@@ -1,6 +1,6 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "A baseline DNS filter: global ads/tracking (HaGeZi NORMAL) + Chinese regional (AdGuard Chinese) + threat intel (TIF Mini) + official exclusions + custom rules",
+    "description": "A layered baseline DNS filter: global ads/tracking (HaGeZi NORMAL) + Chinese regional (AdGuard Chinese) + threat intel (TIF Mini) + custom rules",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
     "sources": [
         {
