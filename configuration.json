@@ -1,78 +1,46 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "HaGeZi Multi NORMAL + AdGuard Chinese + TIF Mini + AWAvenue Ads Rule + custom rules",
+    "description": "A baseline DNS filter: global ads/tracking (HaGeZi NORMAL) + Chinese regional (AdGuard Chinese) + threat intel (TIF Mini) + official exclusions + custom rules",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
     "sources": [
         {
-            "name": "HaGeZi's Multi NORMAL",
+            "name": "HaGeZi's Multi NORMAL (global ads/tracking baseline)",
             "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt",
             "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
+            "transformations": ["RemoveModifiers", "Validate"]
         },
         {
-            "name": "AdGuard Chinese filter ad servers",
+            "name": "AdGuard Chinese filter ad servers (Chinese regional supplement)",
             "source": "https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers.txt",
             "type": "adblock",
-            "exclusions_sources": [
-                "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
-            ],
-            "transformations": [
-                "RemoveModifiers",
-                "ValidateAllowIp"
-            ]
+            "exclusions_sources": ["https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"],
+            "transformations": ["RemoveModifiers", "ValidateAllowIp"]
         },
         {
-            "name": "AdGuard Chinese filter ad servers first-party",
+            "name": "AdGuard Chinese filter ad servers first-party (Chinese first-party supplement)",
             "source": "https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers_firstparty.txt",
             "type": "adblock",
-            "exclusions_sources": [
-                "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
-            ],
-            "transformations": [
-                "RemoveModifiers",
-                "ValidateAllowIp"
-            ]
+            "exclusions_sources": ["https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"],
+            "transformations": ["RemoveModifiers", "ValidateAllowIp"]
         },
         {
-            "name": "HaGeZi's TIF Mini",
+            "name": "HaGeZi's TIF Mini (threat intelligence supplement)",
             "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
             "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
-        },
-        {
-            "name": "AWAvenue Ads Rule",
-            "source": "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt",
-            "type": "adblock",
-            "transformations": [
-                "Validate"
-            ]
+            "transformations": ["RemoveModifiers", "Validate"]
         },
         {
             "name": "My Custom Rules",
             "source": "Filters/rules.txt",
             "type": "adblock",
-            "transformations": [
-                "Validate"
-            ]
+            "transformations": ["Validate"]
         },
         {
             "name": "Exception Rules",
             "source": "Filters/exceptions.txt",
             "type": "adblock",
-            "transformations": [
-                "Validate"
-            ]
+            "transformations": ["Validate"]
         }
     ],
-    "transformations": [
-        "RemoveComments",
-        "Deduplicate",
-        "Compress"
-    ]
+    "transformations": ["RemoveComments", "Deduplicate", "Compress"]
 }
