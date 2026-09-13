@@ -18,10 +18,10 @@
 
 ## 📌 特性
 
-- **成熟底子** — 以 AdGuard DNS filter 为核心，官方持续维护，覆盖广告、追踪、中文区域、加密挖矿。
-- **厂商遥测补充** — 叠加 HaGeZi Windows/Office 和 Vivo 追踪列表，补上官方 DNS filter 不覆盖的系统级遥测。
-- **安全加固** — 叠加 HaGeZi TIF Mini 纯威胁情报，拦截恶意软件、钓鱼和 C2 通信。
-- **无冗余集成** — 四个源各管一个维度，彼此无上下游关系，不存在重复聚合。
+- **顶级拦截** — 以社区第一梯队的 HaGeZi Multi PRO 为核心，提供广覆盖的广告、追踪、遥测和恶意软件拦截。
+- **安全加固** — 叠加 HaGeZi TIF Mini，额外拦截钓鱼、C2 和恶意域名。
+- **中文补充** — 内置 AdGuard Chinese filter，精准补齐中文广告。
+- **官方误报保护** — 编译时应用 AdGuard 官方 exclusions 排除列表，过滤已知会导致网站损坏的域名。
 - **自动更新** — 每 6 小时同步上游最新规则，永不过时。
 - **格式标准** — 经 hostlist-compiler 官方工具编译，完全兼容 AdGuard Home / AdGuard DNS。
 
@@ -31,12 +31,11 @@
 
 | 数据源 | 定位 | 说明 |
 |--------|------|------|
-| [AdGuard DNS filter](https://github.com/AdguardTeam/AdGuardSDNSFilter) | 广告/追踪/中文/挖矿 | 官方成熟聚合底子 |
-| [HaGeZi's Windows/Office Tracker](https://github.com/hagezi/dns-blocklists) | 桌面遥测 | Windows 和 Office 遥测域名 |
-| [HaGeZi's Vivo Tracker](https://github.com/hagezi/dns-blocklists) | 手机遥测 | Vivo 系统与内置应用遥测 |
+| [HaGeZi's Multi PRO](https://github.com/hagezi/dns-blocklists) | 全球广告/追踪 | 社区顶级平衡列表 |
 | [HaGeZi's TIF Mini](https://github.com/hagezi/dns-blocklists) | 安全加固 | 威胁情报，恶意软件、钓鱼、C2 |
+| [AdGuard Chinese filter](https://github.com/AdguardTeam/AdguardFilters) | 中文区域 | 中文广告服务器及第一方补充 |
 
-> 合并去重压缩后，总规则量约 28–32 万条。
+> 合并去重并应用官方排除后，总规则量约 30-40 万条，文件大小约 10-15 MB。
 
 <hr>
 
@@ -65,8 +64,8 @@ GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布�
 
 ## 🙏 致谢
 
-- [AdGuard Filters](https://github.com/AdguardTeam/AdguardFilters) — 广告、追踪、挖矿、中文区域规则
-- [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) — 威胁情报
+- [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) — 广告、追踪、威胁情报
+- [AdGuard Filters](https://github.com/AdguardTeam/AdguardFilters) — 中文广告、官方排除列表
 - [AdGuard Hostlist Compiler](https://github.com/AdguardTeam/HostlistCompiler) — 编译工具
 
 <hr>
