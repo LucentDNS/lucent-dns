@@ -1,25 +1,73 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "Clean up the Internet and protect your privacy! Based on HaGeZi with AWAvenue for CN ads.",
+    "description": "HaGeZi Multi NORMAL + AdGuard Chinese + TIF Mini + AWAvenue Ads Rule + custom rules",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
     "sources": [
         {
-            "name": "HaGeZi's Normal Blocklist",
+            "name": "HaGeZi's Multi NORMAL",
             "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt",
             "type": "adblock",
-            "transformations": ["Validate"]
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
         },
         {
-            "name": "HaGeZi's Threat Intelligence Feeds - mini version",
+            "name": "AdGuard Chinese filter ad servers",
+            "source": "https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers.txt",
+            "type": "adblock",
+            "exclusions_sources": [
+                "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
+            ],
+            "transformations": [
+                "RemoveModifiers",
+                "ValidateAllowIp"
+            ]
+        },
+        {
+            "name": "AdGuard Chinese filter ad servers first-party",
+            "source": "https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers_firstparty.txt",
+            "type": "adblock",
+            "exclusions_sources": [
+                "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
+            ],
+            "transformations": [
+                "RemoveModifiers",
+                "ValidateAllowIp"
+            ]
+        },
+        {
+            "name": "HaGeZi's TIF Mini",
             "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
             "type": "adblock",
-            "transformations": ["Validate"]
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
         },
         {
             "name": "AWAvenue Ads Rule",
             "source": "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/AWAvenue-Ads-Rule.txt",
             "type": "adblock",
-            "transformations": ["Validate"]
+            "transformations": [
+                "Validate"
+            ]
+        },
+        {
+            "name": "My Custom Rules",
+            "source": "Filters/rules.txt",
+            "type": "adblock",
+            "transformations": [
+                "Validate"
+            ]
+        },
+        {
+            "name": "Exception Rules",
+            "source": "Filters/exceptions.txt",
+            "type": "adblock",
+            "transformations": [
+                "Validate"
+            ]
         }
     ],
     "transformations": [
