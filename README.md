@@ -30,11 +30,15 @@
 
 | 数据源 | 定位 | 说明 |
 |--------|------|------|
-| [HaGeZi's Normal Blocklist](https://github.com/hagezi/dns-blocklists) | 核心防护 | 平衡防护，拦截广告、追踪、遥测、钓鱼、恶意软件。家庭环境首选，极低误杀。 |
-| [HaGeZi's TIF Mini](https://github.com/hagezi/dns-blocklists) | 安全加固 | 核心威胁情报防护，拦截恶意软件、钓鱼及 C2 通信。 |
-| [AWAvenue Ads Rule](https://github.com/TG-Twilight/AWAvenue-Ads-Rule) | 中文补全 | 专注拦截国内 App 广告 SDK（开屏、摇一摇、信息流）。 |
+| AdGuard Base filter | 全球广告 | 广告服务器、第一方广告、外国广告 |
+| EasyList | 广告补充 | 经典广告列表，生态最广 |
+| AdGuard Tracking Protection | 追踪防护 | 第三方追踪器、第一方追踪器 |
+| EasyPrivacy | 追踪补充 | 覆盖面广的追踪域名库 |
+| HaGeZi's TIF Mini | 安全加固 | 威胁情报，恶意软件、钓鱼、C2 |
+| URLHaus | 恶意软件 | 专业恶意 URL 库 |
+| AdGuard Chinese filter | 中文区域 | 中文广告服务器及第一方补充 |
 
-> 合并去重压缩后，总规则量约 35 万条。
+> 合并去重压缩后，总规则量约 20-25 万条。
 
 <hr>
 
