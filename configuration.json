@@ -1,29 +1,21 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "A list consisting of multiple filters, after simplification, to better comply with DNS-level ad-blocking requirements.",
+    "description": "HaGeZi Normal + TIF Mini. A balanced, self-owned DNS filter for home and mobile use.",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
+    "version": "1.0.0",
     "sources": [
         {
-            "name": "AdGuard DNS filter",
-            "source": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
+            "name": "HaGeZi Normal",
+            "source": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/normal.txt",
             "type": "adblock",
-            "transformations": [
-                "ValidateAllowIp"
-            ]
+            "transformations": ["RemoveModifiers", "Validate"]
         },
         {
-            "name": "pro-tif-mini",
-            "source": "https://raw.githubusercontent.com/cbuijs/hagezi/main/combo/pro-tif-mini/domains.adblock",
+            "name": "HaGeZi TIF Mini",
+            "source": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.mini.txt",
             "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
+            "transformations": ["RemoveModifiers", "Validate"]
         }
     ],
-    "transformations": [
-        "RemoveComments",
-        "Deduplicate",
-        "Compress"
-    ]
+    "transformations": ["RemoveComments", "Deduplicate", "Compress"]
 }
