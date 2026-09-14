@@ -1,8 +1,8 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "HaGeZi Multi PRO (Full) + TIF Mini + AdGuard Chinese + official exclusions. Best balance of coverage and stability.",
+    "description": "HaGeZi Multi PRO + TIF Mini + AdRules DNS List (Lite). A balanced, self-owned DNS filter for global and Chinese ads.",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
-    "license": "https://github.com/AdguardTeam/AdGuardSDNSFilter/blob/master/LICENSE",
+    "license": "MIT",
     "sources": [
         {
             "name": "HaGeZi's Multi PRO",
@@ -17,16 +17,10 @@
             "transformations": ["RemoveModifiers", "Validate"]
         },
         {
-            "name": "AdGuard Chinese filter ad servers",
-            "source": "https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers.txt",
+            "name": "AdRules DNS List (Lite)",
+            "source": "https://raw.githubusercontent.com/Sereinfy/Adrules/main/rules/adblockdnslite.txt",
             "type": "adblock",
-            "transformations": ["RemoveModifiers", "ValidateAllowIp"]
-        },
-        {
-            "name": "AdGuard Chinese filter ad servers first-party",
-            "source": "https://adguardteam.github.io/AdguardFilters/ChineseFilter/sections/adservers_firstparty.txt",
-            "type": "adblock",
-            "transformations": ["RemoveModifiers", "ValidateAllowIp"]
+            "transformations": ["RemoveModifiers", "Validate"]
         }
     ],
     "transformations": ["RemoveComments", "Deduplicate", "Compress"],
