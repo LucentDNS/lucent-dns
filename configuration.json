@@ -1,30 +1,29 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "HaGeZi Multi PRO + TIF Mini + AdRules DNS List (Lite). A balanced, self-owned DNS filter for global and Chinese ads.",
+    "description": "A list consisting of multiple filters, after simplification, to better comply with DNS-level ad-blocking requirements.",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
-    "license": "MIT",
     "sources": [
         {
-            "name": "HaGeZi's Multi PRO",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt",
+            "name": "AdGuard DNS filter",
+            "source": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt",
             "type": "adblock",
-            "transformations": ["RemoveModifiers", "Validate"]
+            "transformations": [
+                "ValidateAllowIp"
+            ]
         },
         {
-            "name": "HaGeZi's TIF Mini",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
+            "name": "pro-tif-mini",
+            "source": "https://raw.githubusercontent.com/cbuijs/hagezi/main/combo/pro-tif-mini/domains.adblock",
             "type": "adblock",
-            "transformations": ["RemoveModifiers", "Validate"]
-        },
-        {
-            "name": "AdRules DNS List (Lite)",
-            "source": "https://raw.githubusercontent.com/Sereinfy/Adrules/main/rules/adblockdnslite.txt",
-            "type": "adblock",
-            "transformations": ["RemoveModifiers", "Validate"]
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
         }
     ],
-    "transformations": ["RemoveComments", "Deduplicate", "Compress"],
-    "exclusions_sources": [
-        "https://raw.githubusercontent.com/AdguardTeam/AdGuardSDNSFilter/master/Filters/exclusions.txt"
+    "transformations": [
+        "RemoveComments",
+        "Deduplicate",
+        "Compress"
     ]
 }
