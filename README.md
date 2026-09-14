@@ -20,7 +20,7 @@
 
 - **顶级拦截** — 以社区第一梯队的 HaGeZi Multi PRO 为核心，提供广覆盖的广告、追踪、遥测和恶意软件拦截。
 - **安全加固** — 叠加 HaGeZi TIF Mini，额外拦截钓鱼、C2 和恶意域名。
-- **中文补充** — 内置 AdGuard Chinese filter，精准补齐中文广告。
+- **中文补充** — 内置 AdRules DNS List (Lite)，精准补齐中文广告。
 - **官方误报保护** — 编译时应用 AdGuard 官方 exclusions 排除列表，过滤已知会导致网站损坏的域名。
 - **自动更新** — 每 6 小时同步上游最新规则，永不过时。
 - **格式标准** — 经 hostlist-compiler 官方工具编译，完全兼容 AdGuard Home / AdGuard DNS。
@@ -33,9 +33,9 @@
 |--------|------|------|
 | [HaGeZi's Multi PRO](https://github.com/hagezi/dns-blocklists) | 全球广告/追踪 | 社区顶级平衡列表 |
 | [HaGeZi's TIF Mini](https://github.com/hagezi/dns-blocklists) | 安全加固 | 威胁情报，恶意软件、钓鱼、C2 |
-| [AdGuard Chinese filter](https://github.com/AdguardTeam/AdguardFilters) | 中文区域 | 中文广告服务器及第一方补充 |
+| [AdRules DNS List (Lite)](https://github.com/Sereinfy/Adrules) | 中文区域 | 中文广告服务器及第一方补充 |
 
-> 合并去重并应用官方排除后，总规则量约 30-40 万条，文件大小约 10-15 MB。
+> 合并去重并应用官方排除后，总规则量约 35–40 万条，文件大小约 10-15 MB。
 
 <hr>
 
@@ -65,7 +65,7 @@ GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布�
 ## 🙏 致谢
 
 - [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) — 广告、追踪、威胁情报
-- [AdGuard Filters](https://github.com/AdguardTeam/AdguardFilters) — 中文广告、官方排除列表
+- [AdRules DNS List](https://github.com/Sereinfy/Adrules) — 中文广告
 - [AdGuard Hostlist Compiler](https://github.com/AdguardTeam/HostlistCompiler) — 编译工具
 
 <hr>
