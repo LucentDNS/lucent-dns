@@ -27,22 +27,28 @@ jobs:
       - name: 安装 hostlist-compiler
         run: npm install -g @adguard/hostlist-compiler
 
-      - name: 编译规则
-        run: hostlist-compiler -c configuration.json -o dns-filter.txt
+      - name: 编译 AdGuard 格式
+        run: hostlist-compiler -c configuration.json -o dist/dns-filter.txt
 
-      - name: 安装 AGLint
-        run: npm install -g @adguard/aglint
+      - name: 编译 Hosts 格式
+        run: hostlist-compiler -c configuration.json -o dist/hosts.txt --output-format hosts
 
-      - name: 创建 AGLint 配置文件
-        run: echo '{}' > .aglintrc
+      - name: 编译 Domains 格式
+        run: hostlist-compiler -c configuration.json -o dist/domains.txt --output-format domains
 
-      - name: 检查规则质量
-        run: npx aglint dns-filter.txt
+      - name: 安装 AGLint 并检查规则质量
+        run: |
+          npm install -g @adguard/aglint
+          echo '{}' > .aglintrc
+          npx aglint dist/dns-filter.txt
         timeout-minutes: 2
 
-      - name: 获取编译时间
-        id: time
-        run: echo "date=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
+      - name: 获取编译时间与规则数量
+        id: stats
+        run: |
+          echo "date=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
+          RULE_COUNT=$(grep -v '^!' dist/dns-filter.txt | grep -v '^$' | wc -l)
+          echo "count=$RULE_COUNT" >> $GITHUB_OUTPUT
 
       - name: 发布到 Release
         uses: softprops/action-gh-release@v3
@@ -54,32 +60,36 @@ jobs:
 
             | 项目 | 详情 |
             |------|------|
-            | 编译时间 | ${{ steps.time.outputs.date }} |
+            | 编译时间 | ${{ steps.stats.outputs.date }} |
             | 触发方式 | `${{ github.event_name }}` |
             | 运行编号 | #${{ github.run_number }} |
             | 提交哈希 | `${{ github.sha }}` |
 
             ## 📦 规则构成
 
-            - **AdGuard DNS filter**：广告、追踪、中文区域、加密挖矿的成熟聚合底子。
-            - **HaGeZi's Windows/Office Tracker Blocklist**：Windows 和 Office 的遥测域名拦截。
-            - **HaGeZi's Vivo Tracker Blocklist**：Vivo 手机系统与内置应用的遥测拦截。
-            - **HaGeZi's TIF Mini**：纯威胁情报，拦截恶意软件、钓鱼和 C2 通信。
-
-            > 合并去重压缩后，总规则量约 28–32 万条。
+            - **HaGeZi's Normal Blocklist**：涵盖广告、追踪、遥测、分析的业界黄金平衡列表。
+            - **OISD Blocklist Big**：社区公认的高质量基础列表，与 HaGeZi 互补去重。
+            
+            > **定位**：稳健、极低误杀率的“设置后即忘” (Set-and-forget) 规则，适合 99% 的用户日常使用。
+            > **规则数量**：本次编译共生成 **${{ steps.stats.outputs.count }}** 条有效拦截规则。
 
             ## 🔧 使用方法
 
-            在 AdGuard Home 或 AdGuard 客户端中添加以下订阅地址：
+            在 AdGuard Home、AdGuard 客户端、Clash 或路由器中，添加以下订阅地址之一：
 
-            `https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
+            - **AdGuard 格式**：`https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
+            - **Hosts 格式**：`https://github.com/LucentDNS/lucent-dns/releases/latest/download/hosts.txt`
+            - **Domains 格式**：`https://github.com/LucentDNS/lucent-dns/releases/latest/download/domains.txt`
 
             ## ⚠️ 注意事项
 
+            - 本规则库坚决不包含有争议的高误杀规则，如您发现某网站被拦截，请提交 Issue。
             - 适合 **64MB 及以上内存** 的设备。
-            - 如遇误拦，请在 AdGuard 查询日志中将域名加入白名单，或到仓库提交反馈。
 
-          files: dns-filter.txt
+          files: |
+            dist/dns-filter.txt
+            dist/hosts.txt
+            dist/domains.txt
           overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
