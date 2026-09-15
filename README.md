@@ -1,20 +1,12 @@
-<h1 align="center">✨ Lucent DNS</h1>
+# ✨ Lucent DNS
 
-<p align="center">发光的 · 清澈的 · 纯净的 DNS 过滤规则</p>
+发光的 · 清澈的 · 纯净的 DNS 过滤规则
 
-<p align="center">
-  <a href="https://github.com/LucentDNS/lucent-dns/actions/workflows/build.yml">
-    <img src="https://github.com/LucentDNS/lucent-dns/actions/workflows/build.yml/badge.svg" alt="GitHub Actions">
-  </a>
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
-  </a>
-  <a href="https://github.com/LucentDNS/lucent-dns/releases/latest">
-    <img src="https://img.shields.io/github/v/release/LucentDNS/lucent-dns?include_prereleases&label=latest&style=flat" alt="Release">
-  </a>
-</p>
+[![GitHub Actions](https://github.com/LucentDNS/lucent-dns/actions/workflows/build.yml/badge.svg)](https://github.com/LucentDNS/lucent-dns/actions/workflows/build.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Release](https://img.shields.io/github/v/release/LucentDNS/lucent-dns?include_prereleases&label=latest&style=flat)](https://github.com/LucentDNS/lucent-dns/releases/latest)
 
-<hr>
+---
 
 ## 📌 核心特性
 
@@ -24,7 +16,7 @@
 - **自动更新** — 每 6 小时同步上游最新规则，永不过时。
 - **多平台可用** — 虽然只提供 AdGuard 格式，但可通过路由器、AdGuard Home、AdGuard 客户端覆盖您的所有设备。
 
-<hr>
+---
 
 ## 📦 规则构成
 
@@ -35,7 +27,7 @@
 
 > 合并去重压缩后，实际总规则量稳定在 **35 万条左右**，文件大小约 **8–10 MB**。足以满足绝大多数家庭与个人的日常防护需求。
 
-<hr>
+---
 
 ## 🚀 快速开始
 
@@ -56,21 +48,24 @@ npm install -g @adguard/hostlist-compiler
 # 创建输出目录并执行编译
 mkdir -p dist
 hostlist-compiler -c configuration.json -o dist/dns-filter.txt
+```
 
-<hr>
-⏰ 自动更新
+---
+
+## ⏰ 自动更新
 
 GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布。
-<hr>
-🙏 致谢
 
-    HaGeZi DNS Blocklists — 广告、追踪、威胁情报
+---
 
-    OISD — 经典广告拦截列表
+## 🙏 致谢
 
-    AdGuard Hostlist Compiler — 编译工具
+- [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) — 广告、追踪、威胁情报
+- [OISD](https://oisd.nl/) — 经典广告拦截列表
+- [AdGuard Hostlist Compiler](https://github.com/AdguardTeam/HostlistCompiler) — 编译工具
 
-<hr>
-📄 许可证
+---
+
+## 📄 许可证
 
 MIT License © 2026 LucentDNS
