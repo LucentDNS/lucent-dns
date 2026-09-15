@@ -45,10 +45,6 @@
 
 - **AdGuard Home / AdGuard 客户端**：
   `https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
-- **Pi-hole / AdAway / 路由器 (Hosts 格式)**：
-  `https://github.com/LucentDNS/lucent-dns/releases/latest/download/hosts.txt`
-- **Clash / Surge / SmartDNS (纯域名格式)**：
-  `https://github.com/LucentDNS/lucent-dns/releases/latest/download/domains.txt`
 
 ### 手动编译
 
