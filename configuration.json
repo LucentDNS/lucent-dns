@@ -1,7 +1,8 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "List of blocked advertisements and trackers.",
+    "description": "A stable, set-and-forget DNS blocklist combining HaGeZi NORMAL and OISD. Block ads, trackers, and badware with almost zero false positives.",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
+    "license": "MIT",
     "sources": [
         {
             "name": "HaGeZi's Normal Blocklist",
