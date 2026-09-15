@@ -58,21 +58,19 @@ mkdir -p dist
 hostlist-compiler -c configuration.json -o dist/dns-filter.txt
 
 <hr>
-
-## ⏰ 自动更新
+⏰ 自动更新
 
 GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布。
+<hr>
+🙏 致谢
+
+    HaGeZi DNS Blocklists — 广告、追踪、威胁情报
+
+    OISD — 经典广告拦截列表
+
+    AdGuard Hostlist Compiler — 编译工具
 
 <hr>
-
-## 🙏 致谢
-
-- [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) — 广告、追踪、威胁情报
-- [OISD](https://oisd.nl/) — 经典广告拦截列表
-- [AdGuard Hostlist Compiler](https://github.com/AdguardTeam/HostlistCompiler) — 编译工具
-
-<hr>
-
-## 📄 许可证
+📄 许可证
 
 MIT License © 2026 LucentDNS
