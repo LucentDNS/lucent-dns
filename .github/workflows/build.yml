@@ -27,14 +27,11 @@ jobs:
       - name: 安装 hostlist-compiler
         run: npm install -g @adguard/hostlist-compiler
 
+      - name: 创建输出目录
+        run: mkdir -p dist
+
       - name: 编译 AdGuard 格式
         run: hostlist-compiler -c configuration.json -o dist/dns-filter.txt
-
-      - name: 编译 Hosts 格式
-        run: hostlist-compiler -c configuration.json -o dist/hosts.txt --output-format hosts
-
-      - name: 编译 Domains 格式
-        run: hostlist-compiler -c configuration.json -o dist/domains.txt --output-format domains
 
       - name: 安装 AGLint 并检查规则质量
         run: |
@@ -75,21 +72,16 @@ jobs:
 
             ## 🔧 使用方法
 
-            在 AdGuard Home、AdGuard 客户端、Clash 或路由器中，添加以下订阅地址之一：
+            在 AdGuard Home 或 AdGuard 客户端中添加以下订阅地址：
 
-            - **AdGuard 格式**：`https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
-            - **Hosts 格式**：`https://github.com/LucentDNS/lucent-dns/releases/latest/download/hosts.txt`
-            - **Domains 格式**：`https://github.com/LucentDNS/lucent-dns/releases/latest/download/domains.txt`
+            `https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
 
             ## ⚠️ 注意事项
 
             - 本规则库坚决不包含有争议的高误杀规则，如您发现某网站被拦截，请提交 Issue。
             - 适合 **64MB 及以上内存** 的设备。
 
-          files: |
-            dist/dns-filter.txt
-            dist/hosts.txt
-            dist/domains.txt
+          files: dist/dns-filter.txt
           overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
