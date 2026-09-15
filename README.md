@@ -44,7 +44,7 @@
 根据您的设备，选择对应格式的 URL 进行订阅（所有链接都指向最新版本）：
 
 - **AdGuard Home / AdGuard 客户端**：
-  `https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
+`https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
 
 ### 手动编译
 
