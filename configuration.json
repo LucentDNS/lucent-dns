@@ -1,21 +1,30 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "HaGeZi Multi (Normal) + TIF Mini. A balanced, self-owned DNS filter for home and mobile use.",
+    "description": "List of blocked advertisements and trackers.",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
-    "version": "1.0.0",
     "sources": [
         {
-            "name": "HaGeZi Multi",
-            "source": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/multi.txt",
+            "name": "HaGeZi's Normal Blocklist",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt",
             "type": "adblock",
-            "transformations": ["RemoveModifiers", "Validate"]
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
         },
         {
-            "name": "HaGeZi TIF Mini",
-            "source": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.mini.txt",
+            "name": "OISD Blocklist Big",
+            "source": "https://big.oisd.nl/",
             "type": "adblock",
-            "transformations": ["RemoveModifiers", "Validate"]
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
         }
     ],
-    "transformations": ["RemoveComments", "Deduplicate", "Compress"]
+    "transformations": [
+        "RemoveComments",
+        "Deduplicate",
+        "Compress"
+    ]
 }
