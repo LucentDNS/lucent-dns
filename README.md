@@ -16,13 +16,13 @@
 
 <hr>
 
-## 📌 特性
+## 📌 核心特性
 
-- **平衡拦截** — 以社区公认的黄金平衡列表 HaGeZi Normal 为核心，覆盖广告、追踪、遥测、分析。
-- **安全加固** — 叠加 HaGeZi TIF Mini，额外拦截恶意软件、钓鱼、C2 通信。
-- **同源维护** — 两个源均来自 HaGeZi，无规则冲突，去重后体积精简。
+- **极低误杀，设置后即忘** — 以社区公认的黄金平衡列表 `HaGeZi NORMAL` 和 `OISD` 为核心。
+- **拒绝过度拦截** — 坚决不包含容易导致网站崩溃、App 功能异常的高误杀规则，保护您的日常冲浪体验。
+- **多格式输出** — 自动编译并发布 AdGuard、Hosts、Domains 三种格式，覆盖全平台设备。
 - **自动更新** — 每 6 小时同步上游最新规则，永不过时。
-- **格式标准** — 经 hostlist-compiler 官方工具编译，完全兼容 AdGuard Home / AdGuard DNS。
+- **格式标准** — 经 `hostlist-compiler` 官方工具编译，完全兼容 AdGuard Home / AdGuard DNS。
 
 <hr>
 
@@ -31,9 +31,9 @@
 | 数据源 | 定位 | 说明 |
 |--------|------|------|
 | [HaGeZi Normal](https://github.com/hagezi/dns-blocklists) | 全球广告/追踪 | 社区顶级平衡列表，家庭首选 |
-| [HaGeZi TIF Mini](https://github.com/hagezi/dns-blocklists) | 安全加固 | 威胁情报，恶意软件、钓鱼、C2 |
+| [OISD Blocklist Big](https://oisd.nl/) | 全球广告/追踪 | 极低误杀的经典大列表，与 HaGeZi 互补 |
 
-> 合并去重后，总规则量约 28–32 万条，文件大小约 8–10 MB。
+> 合并去重后，总规则量通常在 **18–22 万条**之间，文件大小约 **6–8 MB**。
 
 <hr>
 
@@ -41,9 +41,14 @@
 
 ### 订阅地址
 
-在 AdGuard Home 或 AdGuard 客户端中添加以下 URL：
+根据您的设备，选择对应格式的 URL 进行订阅（所有链接都指向最新版本）：
 
-https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt
+- **AdGuard Home / AdGuard 客户端**：
+  `https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
+- **Pi-hole / AdAway / 路由器 (Hosts 格式)**：
+  `https://github.com/LucentDNS/lucent-dns/releases/latest/download/hosts.txt`
+- **Clash / Surge / SmartDNS (纯域名格式)**：
+  `https://github.com/LucentDNS/lucent-dns/releases/latest/download/domains.txt`
 
 ### 手动编译
 
@@ -63,6 +68,7 @@ GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布�
 ## 🙏 致谢
 
 - [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) — 广告、追踪、威胁情报
+- [OISD](https://oisd.nl/) — 经典广告拦截列表
 - [AdGuard Hostlist Compiler](https://github.com/AdguardTeam/HostlistCompiler) — 编译工具
 
 <hr>
