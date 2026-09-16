@@ -1,26 +1,19 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "A stable, set-and-forget DNS blocklist combining HaGeZi NORMAL and OISD. Block ads, trackers, and badware with almost zero false positives.",
+    "description": "A lightweight DNS filter merging HaGeZi's Pro Mini and TIF Mini, designed for both AdGuard Home and mobile AdGuard clients.",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
-    "license": "MIT",
+    "license": "GPL-3.0",
+    "version": "1.0.0",
     "sources": [
         {
-            "name": "HaGeZi's Normal Blocklist",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/multi.txt",
-            "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
+            "name": "HaGeZi's Pro Mini Blocklist",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.mini.txt",
+            "type": "adblock"
         },
         {
-            "name": "OISD Blocklist Big",
-            "source": "https://big.oisd.nl/",
-            "type": "adblock",
-            "transformations": [
-                "RemoveModifiers",
-                "Validate"
-            ]
+            "name": "HaGeZi's Threat Intelligence Feeds Mini",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
+            "type": "adblock"
         }
     ],
     "transformations": [
