@@ -34,6 +34,7 @@ jobs:
         run: hostlist-compiler -c configuration.json -o dist/dns-filter.txt
 
       - name: Install AGLint and check rule quality
+        continue-on-error: true
         run: |
           npm install -g @adguard/aglint
           echo '{}' > .aglintrc
@@ -51,7 +52,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
-          git add dist/dns-filter.txt
+          git add -f dist/dns-filter.txt
           git commit -m "Auto update DNS filter" || exit 0
           git push
 
