@@ -1,71 +1,70 @@
 # ✨ Lucent DNS
 
-发光的 · 清澈的 · 纯净的 DNS 过滤规则
+Luminous · Clear · Pure DNS Filtering Rules
 
 [![GitHub Actions](https://github.com/LucentDNS/lucent-dns/actions/workflows/build.yml/badge.svg)](https://github.com/LucentDNS/lucent-dns/actions/workflows/build.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![Release](https://img.shields.io/github/v/release/LucentDNS/lucent-dns?include_prereleases&label=latest&style=flat)](https://github.com/LucentDNS/lucent-dns/releases/latest)
 
 ---
 
-## 📌 核心特性
+## 📌 Core Features
 
-- **极低误杀，设置后即忘** — 以社区公认的黄金平衡列表 `HaGeZi NORMAL` 和 `OISD` 为核心。
-- **拒绝过度拦截** — 坚决不包含容易导致网站崩溃、App 功能异常的高误杀规则，保护您的日常冲浪体验。
-- **专注 AdGuard 生态** — 经官方 `hostlist-compiler` 编译，输出标准 AdGuard 语法，完全兼容 AdGuard Home / AdGuard 客户端。
-- **自动更新** — 每 6 小时同步上游最新规则，永不过时。
-- **多平台可用** — 虽然只提供 AdGuard 格式，但可通过路由器、AdGuard Home、AdGuard 客户端覆盖您的所有设备。
-
----
-
-## 📦 规则构成
-
-| 数据源 | 定位 | 说明 |
-|--------|------|------|
-| [HaGeZi Normal](https://github.com/hagezi/dns-blocklists) | 全球广告/追踪 | 社区顶级平衡列表，家庭首选 |
-| [OISD Blocklist Big](https://oisd.nl/) | 全球广告/追踪 | 极低误杀的经典大列表，与 HaGeZi 互补 |
-
-> 合并去重压缩后，实际总规则量稳定在 **35 万条左右**，文件大小约 **8–10 MB**。足以满足绝大多数家庭与个人的日常防护需求。
+- **Ultra-lightweight, mobile-first** — Merges only HaGeZi's `Pro Mini` (core ad blocking) and `TIF Mini` (security).
+- **Low false-positive rate** — Removes aggressive, high-breakage rules to ensure a seamless browsing experience.
+- **AdGuard ecosystem optimized** — Compiled with official `hostlist-compiler`, ensuring full compatibility with AdGuard Home and AdGuard clients.
+- **Auto-updated** — Syncs with upstream sources every 6 hours.
+- **Universal compatibility** — Works seamlessly on desktop AdGuard Home and mobile AdGuard clients with the same subscription URL.
 
 ---
 
-## 🚀 快速开始
+## 📦 Rule Composition
 
-### 订阅地址
+| Source | Purpose | Description |
+|--------|---------|-------------|
+| [HaGeZi Pro Mini](https://github.com/hagezi/dns-blocklists) | Global Ads & Tracking | Ultra-compact core domain list, saving battery and RAM |
+| [HaGeZi TIF Mini](https://github.com/hagezi/dns-blocklists) | Security | Blocks phishing, malware, scams, and more with a friendly file size |
 
-在 AdGuard Home、AdGuard 客户端或其他支持 AdGuard 语法的软件中，添加以下 URL：
+> After deduplication and compression, the total rule count is approximately **200,000 - 220,000 rules** (~4-6 MB). Perfect for mobile devices and lightweight hardware.
 
-`https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
+---
 
-### 手动编译
+## 🚀 Quick Start
 
-如果您需要在本地自行编译：
+### Subscription URL (Recommended: jsDelivr CDN)
+
+Add the following URL to AdGuard Home or AdGuard client:
+
+`https://cdn.jsdelivr.net/gh/LucentDNS/lucent-dns@main/dist/dns-filter.txt`
+
+*(Backup GitHub Release URL: `https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`)*
+
+### Manual Compilation
 
 ```bash
-# 安装官方编译器
+# Install the official compiler
 npm install -g @adguard/hostlist-compiler
 
-# 创建输出目录并执行编译
+# Create output directory and compile
 mkdir -p dist
 hostlist-compiler -c configuration.json -o dist/dns-filter.txt
 ```
 
 ---
 
-## ⏰ 自动更新
+## ⏰ Auto Update
 
-GitHub Actions 每 6 小时自动拉取上游最新规则并重新编译发布。
-
----
-
-## 🙏 致谢
-
-- [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) — 广告、追踪、威胁情报
-- [OISD](https://oisd.nl/) — 经典广告拦截列表
-- [AdGuard Hostlist Compiler](https://github.com/AdguardTeam/HostlistCompiler) — 编译工具
+GitHub Actions automatically pulls the latest upstream rules and recompiles every 6 hours.
 
 ---
 
-## 📄 许可证
+## 🙏 Credits
 
-MIT License © 2026 LucentDNS
+- [HaGeZi DNS Blocklists](https://github.com/hagezi/dns-blocklists) — Ads, tracking, and threat intelligence
+- [AdGuard Hostlist Compiler](https://github.com/AdguardTeam/HostlistCompiler) — Compilation tool
+
+---
+
+## 📄 License
+
+GPL-3.0 License © 2026 LucentDNS
