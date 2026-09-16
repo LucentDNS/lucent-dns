@@ -1,4 +1,4 @@
-name: 编译 DNS 过滤规则
+name: Compile DNS Filter
 
 on:
   workflow_dispatch:
@@ -16,38 +16,38 @@ jobs:
       contents: write
 
     steps:
-      - name: 检出代码
-        uses: actions/checkout@v4 # 建议用 v4 更稳定
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: 设置 Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: 安装 hostlist-compiler
+      - name: Install hostlist-compiler
         run: npm install -g @adguard/hostlist-compiler
 
-      - name: 创建输出目录
+      - name: Create output directory
         run: mkdir -p dist
 
-      - name: 编译 AdGuard 格式
+      - name: Compile AdGuard format
         run: hostlist-compiler -c configuration.json -o dist/dns-filter.txt
 
-      - name: 安装 AGLint 并检查规则质量
+      - name: Install AGLint and check rule quality
         run: |
           npm install -g @adguard/aglint
           echo '{}' > .aglintrc
           npx aglint dist/dns-filter.txt
         timeout-minutes: 2
 
-      - name: 获取编译时间与规则数量
+      - name: Get compilation stats
         id: stats
         run: |
           echo "date=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
           RULE_COUNT=$(grep -v '^!' dist/dns-filter.txt | grep -v '^$' | wc -l)
           echo "count=$RULE_COUNT" >> $GITHUB_OUTPUT
 
-      - name: 推送更新到 main 分支 (用于 jsDelivr 加速)
+      - name: Push update to main branch (for jsDelivr)
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --local user.email 'github-actions[bot]@users.noreply.github.com'
@@ -55,39 +55,39 @@ jobs:
           git commit -m "Auto update DNS filter" || exit 0
           git push
 
-      - name: 发布到 Release
-        uses: softprops/action-gh-release@v2 # 建议使用 v2
+      - name: Publish to Release
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
           name: "✨ Lucent DNS v${{ github.run_number }}"
           body: |
-            ## 📋 编译信息
+            ## 📋 Compilation Info
 
-            | 项目 | 详情 |
-            |------|------|
-            | 编译时间 | ${{ steps.stats.outputs.date }} |
-            | 触发方式 | `${{ github.event_name }}` |
-            | 运行编号 | #${{ github.run_number }} |
-            | 提交哈希 | `${{ github.sha }}` |
+            | Item | Details |
+            |------|---------|
+            | Compile Time | ${{ steps.stats.outputs.date }} |
+            | Trigger | `${{ github.event_name }}` |
+            | Run Number | #${{ github.run_number }} |
+            | Commit Hash | `${{ github.sha }}` |
 
-            ## 📦 规则构成
+            ## 📦 Rule Composition
 
-            - **HaGeZi's Pro Mini Blocklist**：轻量级核心广告、追踪拦截列表。
-            - **HaGeZi's Threat Intelligence Feeds Mini**：迷你版威胁情报列表，防御钓鱼、恶意软件、诈骗。
+            - **HaGeZi's Pro Mini Blocklist**: Lightweight core ad and tracking blocklist.
+            - **HaGeZi's Threat Intelligence Feeds Mini**: Compact threat intelligence list for phishing, malware, and scams.
 
-            > **定位**：极致轻量、兼顾安全与性能的“设置后即忘”规则，特别适合手机端与低配路由器。
-            > **规则数量**：本次编译共生成 **${{ steps.stats.outputs.count }}** 条有效拦截规则。
+            > **Target**: Ultra-lightweight, set-and-forget rules balancing security and performance. Ideal for mobile devices and low-end routers.
+            > **Rule Count**: **${{ steps.stats.outputs.count }}** valid blocking rules generated in this build.
 
-            ## 🔧 使用方法
+            ## 🔧 How to Use
 
-            在 AdGuard Home 或 AdGuard 客户端中添加以下订阅地址：
+            Add the following URL to AdGuard Home or AdGuard client:
 
-            - **jsDelivr 加速（推荐）**：`https://cdn.jsdelivr.net/gh/LucentDNS/lucent-dns@main/dist/dns-filter.txt`
-            - **GitHub Release**：`https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
+            - **jsDelivr CDN (Recommended)**: `https://cdn.jsdelivr.net/gh/LucentDNS/lucent-dns@main/dist/dns-filter.txt`
+            - **GitHub Release**: `https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
 
-            ## ⚠️ 注意事项
+            ## ⚠️ Notes
 
-            - 本规则库基于 HaGeZi 列表精简编译，坚决不包含高误杀规则。如发现误拦截，请提交 Issue。
+            - Based on HaGeZi's lists with aggressive rules trimmed. If you encounter a false positive, please open an Issue.
 
           files: dist/dns-filter.txt
           overwrite_files: true
