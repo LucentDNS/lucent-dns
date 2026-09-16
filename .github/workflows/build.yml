@@ -17,10 +17,10 @@ jobs:
 
     steps:
       - name: 检出代码
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4 # 建议用 v4 更稳定
 
       - name: 设置 Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -47,8 +47,16 @@ jobs:
           RULE_COUNT=$(grep -v '^!' dist/dns-filter.txt | grep -v '^$' | wc -l)
           echo "count=$RULE_COUNT" >> $GITHUB_OUTPUT
 
+      - name: 推送更新到 main 分支 (用于 jsDelivr 加速)
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+          git add dist/dns-filter.txt
+          git commit -m "Auto update DNS filter" || exit 0
+          git push
+
       - name: 发布到 Release
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@v2 # 建议使用 v2
         with:
           tag_name: latest
           name: "✨ Lucent DNS v${{ github.run_number }}"
@@ -64,22 +72,22 @@ jobs:
 
             ## 📦 规则构成
 
-            - **HaGeZi's Normal Blocklist**：涵盖广告、追踪、遥测、分析的业界黄金平衡列表。
-            - **OISD Blocklist Big**：社区公认的高质量基础列表，与 HaGeZi 互补去重。
-            
-            > **定位**：稳健、极低误杀率的“设置后即忘” (Set-and-forget) 规则，适合 99% 的用户日常使用。
+            - **HaGeZi's Pro Mini Blocklist**：轻量级核心广告、追踪拦截列表。
+            - **HaGeZi's Threat Intelligence Feeds Mini**：迷你版威胁情报列表，防御钓鱼、恶意软件、诈骗。
+
+            > **定位**：极致轻量、兼顾安全与性能的“设置后即忘”规则，特别适合手机端与低配路由器。
             > **规则数量**：本次编译共生成 **${{ steps.stats.outputs.count }}** 条有效拦截规则。
 
             ## 🔧 使用方法
 
             在 AdGuard Home 或 AdGuard 客户端中添加以下订阅地址：
 
-            `https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
+            - **jsDelivr 加速（推荐）**：`https://cdn.jsdelivr.net/gh/LucentDNS/lucent-dns@main/dist/dns-filter.txt`
+            - **GitHub Release**：`https://github.com/LucentDNS/lucent-dns/releases/latest/download/dns-filter.txt`
 
             ## ⚠️ 注意事项
 
-            - 本规则库坚决不包含有争议的高误杀规则，如您发现某网站被拦截，请提交 Issue。
-            - 适合 **64MB 及以上内存** 的设备。
+            - 本规则库基于 HaGeZi 列表精简编译，坚决不包含高误杀规则。如发现误拦截，请提交 Issue。
 
           files: dist/dns-filter.txt
           overwrite_files: true
