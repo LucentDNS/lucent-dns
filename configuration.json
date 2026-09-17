@@ -1,19 +1,53 @@
 {
     "name": "Lucent DNS Filter",
-    "description": "A lightweight DNS filter merging HaGeZi's Pro Mini and TIF Mini, designed for both AdGuard Home and mobile AdGuard clients.",
+    "description": "A general-purpose DNS filter merging HaGeZi's Pro, TIF Mini, DynDNS and TikTok lists, designed for both AdGuard Home and mobile AdGuard clients.",
     "homepage": "https://github.com/LucentDNS/lucent-dns",
     "license": "GPL-3.0",
     "version": "1.0.0",
     "sources": [
         {
-            "name": "HaGeZi's Pro Mini Blocklist",
-            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.mini.txt",
-            "type": "adblock"
+            "name": "HaGeZi's Pro Blocklist",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt",
+            "type": "adblock",
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
         },
         {
             "name": "HaGeZi's Threat Intelligence Feeds Mini",
             "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/tif.mini.txt",
-            "type": "adblock"
+            "type": "adblock",
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
+        },
+        {
+            "name": "HaGeZi's Dynamic DNS Blocklist",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/dyndns.txt",
+            "type": "adblock",
+            "transformations": [
+                "Validate"
+            ]
+        },
+        {
+            "name": "HaGeZi's TikTok Native Tracker",
+            "source": "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/native.tiktok.txt",
+            "type": "adblock",
+            "transformations": [
+                "RemoveModifiers",
+                "Validate"
+            ]
+        },
+        {
+            "name": "Local Rules",
+            "source": "local-rules.txt",
+            "type": "adblock",
+            "transformations": [
+                "RemoveComments",
+                "Validate"
+            ]
         }
     ],
     "transformations": [
