@@ -10,11 +10,11 @@ Luminous · Clear · Pure DNS Filtering Rules
 
 ## 📌 Core Features
 
-- **Ultra-lightweight, mobile-first** — Merges only HaGeZi's `Pro Mini` (core ad blocking) and `TIF Mini` (security).
-- **Low false-positive rate** — Removes aggressive, high-breakage rules to ensure a seamless browsing experience.
-- **AdGuard ecosystem optimized** — Compiled with official `hostlist-compiler`, ensuring full compatibility with AdGuard Home and AdGuard clients.
+- **High-coverage filtering** — Merges HaGeZi's `Pro` (ads, tracking, malware), `TIF Mini` (threat intelligence), `DynDNS` (abused dynamic DNS) and `TikTok` (native tracker).
+- **Controlled false positives** — All sources are validated and compressed, removing redundant subdomain rules.
+- **AdGuard ecosystem optimized** — Compiled with official `hostlist-compiler`, fully compatible with AdGuard Home and AdGuard clients.
 - **Auto-updated** — Syncs with upstream sources every 6 hours.
-- **Universal compatibility** — Works seamlessly on desktop AdGuard Home and mobile AdGuard clients with the same subscription URL.
+- **Self-maintained extension** — `local-rules.txt` allows project-specific supplementary rules.
 
 ---
 
@@ -22,10 +22,13 @@ Luminous · Clear · Pure DNS Filtering Rules
 
 | Source | Purpose | Description |
 |--------|---------|-------------|
-| [HaGeZi Pro Mini](https://github.com/hagezi/dns-blocklists) | Global Ads & Tracking | Ultra-compact core domain list, saving battery and RAM |
-| [HaGeZi TIF Mini](https://github.com/hagezi/dns-blocklists) | Security | Blocks phishing, malware, scams, and more with a friendly file size |
+| [HaGeZi Pro](https://github.com/hagezi/dns-blocklists) | Ads & Tracking | Full-coverage core blocklist |
+| [HaGeZi TIF Mini](https://github.com/hagezi/dns-blocklists) | Security | Phishing, malware, scam domains |
+| [HaGeZi DynDNS](https://github.com/hagezi/dns-blocklists) | Security | Abused dynamic DNS domains |
+| [HaGeZi TikTok](https://github.com/hagezi/dns-blocklists) | Tracking | TikTok native tracker domains |
+| Local Rules | Supplementary | Project-specific extra rules |
 
-> After deduplication and compression, the total rule count is approximately **200,000 - 220,000 rules** (~4-6 MB). Perfect for mobile devices and lightweight hardware.
+> After deduplication and compression, the total rule count is approximately **360,000 - 370,000 rules** (~8-10 MB). Suitable for AdGuard Home, desktop AdGuard, and modern mobile devices.
 
 ---
 
@@ -42,10 +45,7 @@ Add the following URL to AdGuard Home or AdGuard client:
 ### Manual Compilation
 
 ```bash
-# Install the official compiler
 npm install -g @adguard/hostlist-compiler
-
-# Create output directory and compile
 mkdir -p dist
 hostlist-compiler -c configuration.json -o dist/dns-filter.txt
 ```
