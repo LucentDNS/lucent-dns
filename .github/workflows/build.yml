@@ -7,6 +7,7 @@ on:
   push:
     paths:
       - 'configuration.json'
+      - 'local-rules.txt'
       - '.github/workflows/build.yml'
 
 jobs:
@@ -73,10 +74,13 @@ jobs:
 
             ## 📦 Rule Composition
 
-            - **HaGeZi's Pro Mini Blocklist**: Lightweight core ad and tracking blocklist.
-            - **HaGeZi's Threat Intelligence Feeds Mini**: Compact threat intelligence list for phishing, malware, and scams.
+            - **HaGeZi's Pro Blocklist**: Full-coverage ad, tracking and malware blocklist.
+            - **HaGeZi's Threat Intelligence Feeds Mini**: Compact threat intelligence for phishing, malware and scams.
+            - **HaGeZi's Dynamic DNS Blocklist**: Blocks abused dynamic DNS domains.
+            - **HaGeZi's TikTok Native Tracker**: Blocks TikTok native tracking domains.
+            - **Local Rules**: Project-specific supplementary rules.
 
-            > **Target**: Ultra-lightweight, set-and-forget rules balancing security and performance. Ideal for mobile devices and low-end routers.
+            > **Target**: High-coverage DNS filtering with controlled false positives.
             > **Rule Count**: **${{ steps.stats.outputs.count }}** valid blocking rules generated in this build.
 
             ## 🔧 How to Use
@@ -88,7 +92,7 @@ jobs:
 
             ## ⚠️ Notes
 
-            - Based on HaGeZi's lists with aggressive rules trimmed. If you encounter a false positive, please open an Issue.
+            - Based on HaGeZi's lists. If you encounter a false positive, please open an Issue.
 
           files: dist/dns-filter.txt
           overwrite_files: true
