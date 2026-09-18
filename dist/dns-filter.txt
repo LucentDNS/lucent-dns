@@ -4,7 +4,7 @@
 ! Version: 1.0.0
 ! Homepage: https://github.com/LucentDNS/lucent-dns
 ! License: GPL-3.0
-! Last modified: 2026-09-18T15:54:03.036Z
+! Last modified: 2026-09-18T20:27:05.276Z
 !
 ! Compiled by @adguard/hostlist-compiler v2.1.1
 !
